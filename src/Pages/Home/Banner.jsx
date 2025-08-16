@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -29,6 +30,12 @@ const Banner = () => {
               tracking applications, and unlocking opportunities that shape your
               future.
             </p>
+            <Link
+              to={"/about"}
+              className="btn border-none bg-blue-500 hover:bg-blue-600 text-white px-6 transition-all duration-300 shadow-none hover:shadow-md hover:shadow-blue-600 mt-10"
+            >
+              About ScholarX
+            </Link>
           </div>
         </div>
 
@@ -47,6 +54,12 @@ const Banner = () => {
               ScholarX connects ambition with financial support—helping students
               pursue education without the burden of funding barriers.
             </p>
+            <Link
+              to={"/scholarships"}
+              className="btn border-none bg-blue-500 hover:bg-blue-600 text-white px-6 transition-all duration-300 shadow-none hover:shadow-md hover:shadow-blue-600 mt-10"
+            >
+              Explore Scholarships
+            </Link>
           </div>
         </div>
 
@@ -65,6 +78,12 @@ const Banner = () => {
               Join a vibrant community of learners who are turning aspirations
               into achievements with the help of meaningful scholarships.
             </p>
+            <Link
+              to={"/contact-us"}
+              className="btn border-none bg-blue-500 hover:bg-blue-600 text-white px-6 transition-all duration-300 shadow-none hover:shadow-md hover:shadow-blue-600 mt-10"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </Carousel>

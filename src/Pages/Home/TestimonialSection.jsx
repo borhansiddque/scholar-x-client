@@ -39,6 +39,7 @@ const TestimonialSection = () => (
       loop
       autoplay={{
         delay: 3000,
+        pauseOnMouseEnter: true,
         disableOnInteraction: false,
       }}
       modules={[Pagination, Autoplay]}
