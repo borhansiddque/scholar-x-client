@@ -4,6 +4,8 @@ import TestimonialSection from "./TestimonialSection";
 import StepGuideSection from "./StepGuideSection";
 import TopScholarships from "./TopScholarships";
 import Banner from "./Banner";
+import CTASection from "./CTASection";
+import FAQSection from "./FAQSection";
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
         <TopScholarships />
         <TestimonialSection />
         <StepGuideSection />
+        <CTASection />
+        <FAQSection />
       </Container>
     </div>
   );
