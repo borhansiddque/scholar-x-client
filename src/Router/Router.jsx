@@ -23,6 +23,7 @@ import AllReviews from "../Pages/Dashboard/AllReviews/AllReviews";
 import AdminProfile from "../Pages/Dashboard/Profile/Admin/AdminProfile";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "../Pages/TermsOfService/TermsOfService";
+import Contact from "../Pages/Contact/Contact";
 
 let router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ let router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutUs,
+      },
+      {
+        path: "/contact-us",
+        Component: Contact,
       },
       {
         path: "/privacy-policy",
