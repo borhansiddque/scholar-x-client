@@ -1,6 +1,7 @@
 // Footer.jsx
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import logo from "/logo.png";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -45,13 +46,17 @@ const Footer = () => {
               <a className="link link-hover">Contact Us</a>
             </li>
             <li>
+              <Link to={"/privacy-policy"} className="link link-hover">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to={"/terms-of-service"} className="link link-hover">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
               <a className="link link-hover">Help Center</a>
-            </li>
-            <li>
-              <a className="link link-hover">Privacy Policy</a>
-            </li>
-            <li>
-              <a className="link link-hover">Terms of Service</a>
             </li>
           </ul>
         </div>

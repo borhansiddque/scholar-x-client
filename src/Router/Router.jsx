@@ -21,6 +21,8 @@ import AllAppliedScholarships from "../Pages/Dashboard/AllAppliedScholarships/Al
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
 import AllReviews from "../Pages/Dashboard/AllReviews/AllReviews";
 import AdminProfile from "../Pages/Dashboard/Profile/Admin/AdminProfile";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import TermsOfService from "../Pages/TermsOfService/TermsOfService";
 
 let router = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ let router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutUs,
+      },
+      {
+        path: "/privacy-policy",
+        Component: PrivacyPolicy,
+      },
+      {
+        path: "/terms-of-service",
+        Component: TermsOfService,
       },
       {
         path: "/login",
