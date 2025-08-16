@@ -31,7 +31,7 @@ const testimonials = [
 ];
 
 const TestimonialSection = () => (
-  <section className="bg-white my-20 px-4 md:px-20">
+  <section className="bg-white my-20 px-4 md:px-20 ">
     <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-8">
       Hear From Our Scholars
     </h2>
@@ -48,7 +48,7 @@ const TestimonialSection = () => (
     >
       {testimonials.map((t, index) => (
         <SwiperSlide key={index}>
-          <div className="bg-gray-50 p-6 rounded shadow text-center">
+          <div className="bg-gray-50 p-6 rounded shadow text-center border border-gray-200">
             <img
               src={t.photo}
               alt={t.name}
