@@ -78,6 +78,18 @@ const Navbar = () => {
           About Us
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={"/contact-us"}
+          className={({ isActive }) =>
+            `text-lg font-medium ${
+              isActive ? "text-blue-500" : "text-gray-600"
+            }`
+          }
+        >
+          Contact Us
+        </NavLink>
+      </li>
     </>
   );
   return (

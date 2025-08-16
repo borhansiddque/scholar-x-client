@@ -6,6 +6,7 @@ import {
   FaMapMarkerAlt,
   FaPaperPlane,
 } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,13 +26,13 @@ const Contact = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     // TODO: Connect to backend/email service
-    alert("Message sent! We'll get back to you soon.");
+    toast.success("Message sent! We'll get back to you soon.");
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
     <Container>
-      <div className="px-6 my-10 md:my-20 max-w-4xl mx-auto">
+      <div className="px-6 my-10 md:my-20 max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
