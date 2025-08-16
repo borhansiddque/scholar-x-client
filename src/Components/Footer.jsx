@@ -27,13 +27,10 @@ const Footer = () => {
               <Link to={'/'} className="link link-hover">Home</Link>
             </li>
             <li>
-              <a className="link link-hover">Apply</a>
+              <Link to={"/scholarships"} className="link link-hover">All Scholarships</Link>
             </li>
             <li>
               <a className="link link-hover">Dashboard</a>
-            </li>
-            <li>
-              <a className="link link-hover">FAQs</a>
             </li>
           </ul>
         </div>
