@@ -10,6 +10,8 @@ const AllScholarships = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [sortOrder, setSortOrder] = useState("asc"); // New state for sorting
+
   const limit = 6; // cards per page
 
   useEffect(() => {
@@ -30,8 +32,9 @@ const AllScholarships = () => {
       }
     };
     fetchScholarships();
-  }, [currentPage, searchTerm]); // 👈 fetch again when searchTerm changes
+  }, [currentPage, searchTerm]);
 
+  // Filter scholarships by search term
   const filteredScholarships = scholarships.filter((scholarship) => {
     const term = searchTerm.toLowerCase();
     return (
@@ -41,12 +44,21 @@ const AllScholarships = () => {
     );
   });
 
+  // Sort filtered scholarships by applicationFees
+  const sortedScholarships = [...filteredScholarships].sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.applicationFees - b.applicationFees;
+    } else {
+      return b.applicationFees - a.applicationFees;
+    }
+  });
+
   return (
     <div className="max-w-7xl mx-auto min-h-[75vh] my-10">
       <h2 className="text-4xl font-bold mb-4 text-center">All Scholarships</h2>
 
-      {/* Search Input */}
-      <div className="flex items-center justify-center gap-2">
+      {/* Search and Sort Controls */}
+      <div className="flex items-center justify-center gap-4 my-4 flex-wrap">
         <input
           type="text"
           placeholder="Search by Scholarship, University, or Degree"
@@ -54,6 +66,14 @@ const AllScholarships = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border border-gray-300 rounded px-4 py-2 sm:w-1/2"
         />
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="border border-gray-300 rounded px-4 py-2"
+        >
+          <option value="asc">Sort by Price: Low to High</option>
+          <option value="desc">Sort by Price: High to Low</option>
+        </select>
       </div>
 
       {/* Loading State */}
@@ -61,7 +81,7 @@ const AllScholarships = () => {
         <Loading />
       ) : (
         <>
-          {filteredScholarships.length === 0 ? (
+          {sortedScholarships.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-64 text-center">
               <p className="text-2xl font-semibold text-gray-700 mb-2">
                 No Data Found
@@ -72,12 +92,12 @@ const AllScholarships = () => {
             </div>
           ) : (
             <>
-              {/* Scholarship Card */}
+              {/* Scholarship Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                {filteredScholarships.map((scholarship) => (
+                {sortedScholarships.map((scholarship) => (
                   <div
                     key={scholarship._id}
-                    className="border rounded-lg shadow p-4 bg-white"
+                    className="border rounded-lg shadow p-4 bg-white flex flex-col"
                   >
                     <div className="flex flex-col items-center justify-center">
                       <img
@@ -89,10 +109,9 @@ const AllScholarships = () => {
                         {scholarship.scholarshipName}
                       </h3>
                     </div>
-                    <div className="my-5">
+                    <div className="my-5 flex-grow">
                       <h3 className="text-lg">
-                        <strong>University:</strong>{" "}
-                        {scholarship.universityName}
+                        <strong>University:</strong> {scholarship.universityName}
                       </h3>
                       <p className="text-gray-700 mb-1">
                         <strong>Degree:</strong> {scholarship.degree}
@@ -110,16 +129,13 @@ const AllScholarships = () => {
                         {scholarship.applicationDeadline}
                       </p>
                       <p className="text-gray-700 mb-1">
-                        <strong>Subject Category:</strong>{" "}
-                        {scholarship.subjectCategory}
+                        <strong>Subject Category:</strong> {scholarship.subjectCategory}
                       </p>
                       <p className="text-gray-700 mb-1">
-                        <strong>Application Fees:</strong> $
-                        {scholarship.applicationFees}
+                        <strong>Application Fees:</strong> ${scholarship.applicationFees}
                       </p>
                       <p className="text-gray-700 mb-3">
                         <strong>Rating:</strong>{" "}
-                        {/* You’ll want to compute actual rating averages here */}
                         {scholarship.ratingPoint
                           ? scholarship.ratingPoint.toFixed(1)
                           : "No ratings"}
@@ -127,19 +143,20 @@ const AllScholarships = () => {
                     </div>
                     <Link
                       to={`/scholarship/${scholarship._id}`}
-                      className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all duration-300"
+                      className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all duration-300 text-center"
                     >
                       Scholarship Details
                     </Link>
                   </div>
                 ))}
               </div>
+
               {/* Pagination Controls */}
               <div className="flex justify-center mt-8 space-x-4">
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((prev) => prev - 1)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed "
+                  className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                 >
                   Prev
                 </button>
